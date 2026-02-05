@@ -1,0 +1,182 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Prishi1lab/demo_/blob/main/genai.ipy\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KJ_Qyb5R4Xqx",
+        "outputId": "0195aa29-ebcb-46ca-f850-86f965d69819"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Original text :  I am feeling well very happy today!!!...\n"
+          ]
+        }
+      ],
+      "source": [
+        "text = \"I am feeling well very happy today!!!...\"\n",
+        "print(\"Original text : \",text)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aJw5QrrD6Cpu",
+        "outputId": "c2a1006b-f31c-4772-b4b9-137f70e3b488"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Lowercase: i am feeling well very happy today!!!...\n"
+          ]
+        }
+      ],
+      "source": [
+        "# convert text into lowercase because happy!= Happy\n",
+        "#  ml will consider them as different\n",
+        "text = text.lower()\n",
+        "print(\"Lowercase:\",text)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dXG406e86lRH",
+        "outputId": "0b5e1578-2369-49a5-fd90-f6332d7cd8a6"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "without punctuation: i am feeling well very happy today\n"
+          ]
+        }
+      ],
+      "source": [
+        "# remove punctuations\n",
+        "# we remove everything except letters and spaces\n",
+        "# Using re - regular expression // regex  PATTERN\n",
+        "\n",
+        "import re\n",
+        "text = re.sub(r'[^\\w\\s]','',text)\n",
+        "print(\"without punctuation:\",text)\n",
+        "# remove everything except letter and spaces"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "naCoNOV78zlS",
+        "outputId": "3ef3079e-1e12-4f38-d329-f9778ea7e282"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Tokens :  ['i', 'am', 'feeling', 'well', 'very', 'happy', 'today']\n"
+          ]
+        }
+      ],
+      "source": [
+        "# tokenization (split sentence into words)\n",
+        "tokens = text.split()\n",
+        "print(\"Tokens : \",tokens)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GTpV8gGq9BPE",
+        "outputId": "82b2b52f-c88f-467d-f455-9590c44ff63f"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "After removing stopwords :  ['feeling', 'well', 'happy', 'today']\n"
+          ]
+        }
+      ],
+      "source": [
+        "# remove stopwords i, am, is, are, the nlt all stop words present\n",
+        "stopwords = [\"i\",\"am\",\"is\",\"the\",\"a\",\"an\",\"very\"]\n",
+        "filtered_tokens = []\n",
+        "for words in tokens:\n",
+        "  if words not in stopwords:\n",
+        "    filtered_tokens.append(words)\n",
+        "print(\"After removing stopwords : \",filtered_tokens)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "background_save": true
+        },
+        "id": "GnJJaOWV96Pc"
+      },
+      "outputs": [],
+      "source": [
+        "def stem(word):\n",
+        "  if word.endswith(\"ing\"):\n",
+        "    return word[:-3]\n",
+        "    stem_words"
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "toc_visible": true,
+      "authorship_tag": "ABX9TyOQ9u6yDfyJZVnmfVPNSCDS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
